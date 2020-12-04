@@ -17,8 +17,8 @@ const devConfig = {
         })
     ],
     resolve: {
-      extensions: [ '.tsx', '.ts', '.js' ],
-    },
+      extensions: [ '*', '.tsx', '.ts', '.js', '.jsx' ]
+    }
 };
 
 module.exports = merge(commonConfig, devConfig);
