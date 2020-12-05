@@ -7,3 +7,5 @@ dist
 ./packages/auth/node_modules
 ./packages/dashboard/node_modules
 ./packages/marketing/node_modules
+./packages/pim/node_modules
+./packages/shop/node_modules
