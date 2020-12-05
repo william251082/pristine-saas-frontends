@@ -18,7 +18,8 @@ const devConfig = {
             filename: 'remoteEntry.js',
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js'
-            }
+            },
+            shared: ['react', 'react-dom']
         }),
         new HtmlWebPackPlugin({
             template: './public/index.html'
