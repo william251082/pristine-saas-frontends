@@ -16,7 +16,7 @@ module.exports = {
       // app is in you folder structure.
       remotes: {
         // this defines our remote app name space, so we will be able to
-        // import from 'app1'
+        // import from 'pim'
         pim: isServer
           ? path.resolve(
               __dirname,
