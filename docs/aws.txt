@@ -1,0 +1,4 @@
+-- Make cloudfront update the changes
+1 cloudfront/invalidation
+2 create invalidation /content/latest/index.html
+3 everytime the main/<hash>/ change is where cloudfront updates
