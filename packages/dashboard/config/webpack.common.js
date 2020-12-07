@@ -1,39 +1,24 @@
-const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: '[name].[contenthash].js',
-  },
-  resolve: {
-    extensions: [ '*', '.tsx', '.ts', '.js', '.jsx', 'vue' ]
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpe?g|gif|woff|svg|eot|ttf)$/i,
-        use: [{ loader: 'file-loader' }],
-      },
-      {
-        test: /\.vue$/,
-        use: 'vue-loader',
-      },
-      {
-        test: /\.scss|\.css$/,
-        use: ['vue-style-loader', 'style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime']
-          },
-        },
-      },
-    ],
-  },
-  plugins: [new VueLoaderPlugin()],
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx|tsx|ts)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react', '@babel/preset-env', "@babel/preset-typescript", ],
+                        plugins: ['@babel/plugin-transform-runtime', "@babel/proposal-class-properties", "@babel/proposal-object-rest-spread"]
+                    }
+                }
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './public/index.html'
+        })
+    ]
 };

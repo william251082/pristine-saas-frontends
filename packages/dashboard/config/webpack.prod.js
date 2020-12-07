@@ -19,6 +19,9 @@ const prodConfig = {
       shared: packageJson.dependencies,
     }),
   ],
+  resolve: {
+    extensions: [ '*', '.tsx', '.ts', '.js', '.jsx' ]
+  }
 };
 
 module.exports = merge(commonConfig, prodConfig);

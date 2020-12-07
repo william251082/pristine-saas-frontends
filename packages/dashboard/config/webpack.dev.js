@@ -1,35 +1,33 @@
 const { merge } = require('webpack-merge');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const packageJson = require('../package.json');
 
 const devConfig = {
-  mode: 'development',
-  output: {
-    publicPath: 'http://localhost:8083/',
-  },
-  devServer: {
-    port: 8083,
-    historyApiFallback: {
-      index: 'index.html',
+    entry: './src/index.ts',
+    mode: 'development',
+    output: {
+        publicPath: 'http://localhost:8083/'
     },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
+    devServer: {
+        port: 8083,
+        historyApiFallback: {
+            index: 'index.html'
+        }
     },
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'dashboard',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './DashboardApp': './src/bootstrap',
-      },
-
-    })
-  ],
-  resolve: {
-    extensions: [ '*', '.tsx', '.ts', '.js', '.jsx' ]
-  }
+    plugins: [
+        new ModuleFederationPlugin({
+            name: 'dashboard',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './DashboardApp': './src/bootstrap'
+            },
+            shared: packageJson.dependencies
+        })
+    ],
+    resolve: {
+      extensions: [ '*', '.tsx', '.ts', '.js', '.jsx' ]
+    }
 };
 
 module.exports = merge(commonConfig, devConfig);
