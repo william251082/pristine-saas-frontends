@@ -1,20 +1,31 @@
 {
   "name": "auth",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.7",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router": "^5.1.8",
+    "@types/react-router-dom": "^5.1.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
