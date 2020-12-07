@@ -9,13 +9,17 @@ var generateClassName = styles_1.createGenerateClassName({
     productionPrefix: 'au'
 });
 exports.default = (function (_a) {
-    var history = _a.history;
+    var history = _a.history, onSignIn = _a.onSignIn;
     return (<div>
             <styles_1.StylesProvider generateClassName={generateClassName}>
                 <react_router_dom_1.Router history={history}>
                     <react_router_dom_1.Switch>
-                        <react_router_dom_1.Route exact path="/auth/signin" component={Signin_1.default}/>
-                        <react_router_dom_1.Route exact path="/auth/signup" component={Signup_1.default}/>
+                        <react_router_dom_1.Route exact path="/auth/signin">
+                            <Signin_1.default onSignIn={onSignIn}/>
+                        </react_router_dom_1.Route>
+                        <react_router_dom_1.Route exact path="/auth/signup">
+                            <Signup_1.default onSignIn={onSignIn}/>
+                        </react_router_dom_1.Route>
                     </react_router_dom_1.Switch>
                 </react_router_dom_1.Router>
             </styles_1.StylesProvider>
