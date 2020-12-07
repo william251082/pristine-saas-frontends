@@ -4,8 +4,10 @@ import App from "./App";
 import {createMemoryHistory, createBrowserHistory} from "history";
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
-    const history = defaultHistory || createMemoryHistory();
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+    const history = defaultHistory || createMemoryHistory({
+        initialEntries: [initialPath]
+    });
 
     if (onNavigate) {
         history.listen(onNavigate);
@@ -17,6 +19,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
 
     return {
         onParentNavigate({pathname: nextPathname}) {
+            console.log(nextPathname)
             const { pathname } = history.location;
 
             if (pathname !== nextPathname) {
@@ -31,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
     const devRoot = document.querySelector('#_auth-dev-root');
 
     if (devRoot) {
-        mount(devRoot, { onNavigate: ()=>{}, defaultHistory: createBrowserHistory() });
+        mount(devRoot, { onNavigate: ()=>{}, defaultHistory: createBrowserHistory(), initialPath: '' });
     }
 }
 
