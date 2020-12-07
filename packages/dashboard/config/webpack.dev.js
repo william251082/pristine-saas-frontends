@@ -1,11 +1,9 @@
 const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json');
 
 const devConfig = {
-  entry: './src/index.ts',
   mode: 'development',
   output: {
     publicPath: 'http://localhost:8083/',
@@ -27,11 +25,11 @@ const devConfig = {
         './DashboardApp': './src/bootstrap',
       },
       shared: packageJson.dependencies,
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
+    })
   ],
+  resolve: {
+    extensions: [ '*', '.tsx', '.ts', '.js', '.jsx' ]
+  }
 };
 
 module.exports = merge(commonConfig, devConfig);

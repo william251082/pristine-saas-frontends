@@ -1,8 +1,8 @@
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  entry: './src/index.ts',
-  ouput: {
+  entry: './src/index.js',
+  output: {
     filename: '[name].[contenthash].js',
   },
   resolve: {
@@ -28,8 +28,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', "@babel/preset-typescript"],
-            plugins: ['@babel/plugin-transform-runtime', "@babel/proposal-class-properties", "@babel/proposal-object-rest-spread"],
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime']
           },
         },
       },
