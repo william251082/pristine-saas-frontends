@@ -24,7 +24,7 @@ const devConfig = {
       exposes: {
         './DashboardApp': './src/bootstrap',
       },
-      shared: packageJson.dependencies,
+
     })
   ],
   resolve: {
